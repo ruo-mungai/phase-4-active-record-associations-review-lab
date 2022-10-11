@@ -18,12 +18,10 @@ ActiveRecord::Schema.define(version: 2021_05_06_153127) do
   end
 
   create_table "rides", force: :cascade do |t|
-    t.integer "tax_id", null: false
-    t.integer "passenger_id", null: false
+    t.integer "taxi_id"
+    t.integer "passenger_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["passenger_id"], name: "index_rides_on_passenger_id"
-    t.index ["tax_id"], name: "index_rides_on_tax_id"
   end
 
   create_table "taxis", force: :cascade do |t|
@@ -31,6 +29,4 @@ ActiveRecord::Schema.define(version: 2021_05_06_153127) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "rides", "passengers"
-  add_foreign_key "rides", "taxes"
 end
